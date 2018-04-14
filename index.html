@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人主页</title>
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/iconfont.js"></script>
+</head>
+<body>
+	<header>
+		<div class="main">
+			<div class="header_left">
+				<p>LYW</p>
+			</div>
+			<div class="header_right">
+				<ul>
+					<li>HOME</li>
+					<li>ABOUT</li>
+					<li>SKILL</li>
+					<li>PORTFOLIO</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="line"></div>
+	<div class="banner">
+		<div class="about">
+			<div class="about_left">
+				<div class="line_left"></div>
+				<div class="line_right"></div>
+				<div class="img"></div>
+				<div class="wel">Welcome!</div>
+			</div>
+			<div class="about_right">
+				<h3>ABOUT ME.</h3>
+				<p>本人李轶文,现吕梁学院计算机科学与技术专业(对口)1501班的学生,来自山西晋城,今年21岁.</p>
+				<p>接触前端是在大三,在大三期间开始自学前端的一些课程,HTML,CSS,js,框架都有涉及,前前后后也做了一些小的案例,希望有更多的前端知识来丰富自己,可以和更好的老师,同学沟通,成为一名合格的前端工程师.</p>
+
+				<div class="skill">
+					<p>JavaScript</p>
+					<div class="progress">
+						<div class="progress-bar active progress-bar-striped progress-bar-warning" 		style="width:50%">50%</div>
+					</div>
+					<p>HTML+CSS3</p>
+					<div class="progress">
+						<div class="progress-bar active progress-bar-striped progress-bar-success" 		style="width:80%">80%</div>
+					</div>
+					<p>jQuery</p>
+					<div class="progress">
+						<div class="progress-bar active progress-bar-striped" style="width:60%">60%</div>
+					</div>
+					<p>PHP</p>
+					<div class="progress">
+						<div class="progress-bar active progress-bar-striped progress-bar-danger" 		style="width:30%">30%</div>
+					</div>
+					<p>bootstrap</p>
+					<div class="progress">
+						<div class="progress-bar active progress-bar-striped progress-bar-danger" 		style="width:40%">40%</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="pp">
+		<div class="portfolio">
+		<h3>PORTFOLIO</h3>
+		<p class="show">以下为我的阶段项目成果</p>
+		<ul>
+			<li><a href="https://liyiwen1228.github.io/computer/demo.html"></a><div class="info"><p class="info_p">只能看的计算器</p></div></li>
+			<li><a href="https://liyiwen1228.github.io/phone/"></a><div class="info"><p class="info_p">OPPO你的不二选择</p></div></li>
+			<li><a href="https://liyiwen1228.github.io/360/"></a><div class="info"><p class="info_p">360手机网(移动端)</p></div></li>
+			<li><a href="https://liyiwen1228.github.io/TMApp/index.html"></a><div class="info"><p class="info_p">掌上天气</p></div></li>
+			<li><a href="https://liyiwen1228.github.io/fanke/"></a><div class="info"><p class="info_p">凡客官网</p></div></li>
+			<li><a href="https://liyiwen1228.github.io/jd/"></a><div class="info"><p class="info_p">京东首页(半成品)</p></div></li>
+		</ul>
+		</div>
+	</div>
+	<footer>
+		<div class="footer">
+			<ul>
+				<li>
+					<a href="" class="iconfont">&#xe600;
+						<span class="qq iconfont">&#xe626;</span>
+						<span class="icon iconfont">&#xe626;</span>
+					</a>
+				</li>
+				<li>
+					<a href="" class="iconfont">&#xe73b;
+						<span class="wx"></span>
+						<span class="icon iconfont">&#xe626;</span>
+					</a>
+				</li>
+				<li>
+					<a href="https://weibo.com/5703005054/profile?topnav=1&wvr=6&is_all=1" class="iconfont">&#xe73c;
+						<span class="weibo">Weibo</span>
+						<span class="icon iconfont">&#xe626;</span>
+					</a>
+				</li>
+				<li>
+					<a href="" class="iconfont">&#xe629;
+						<span class="youxiang">2294037542@qq.com</span>
+						<span class="icon iconfont">&#xe626;</span>
+					</a>
+				</li>
+			</ul>
+			<p>Copyright &coty; 2018.Company name All rights reserved</p>
+		</div>
+	</footer>
+	<script>
+		var timer=null;
+		var target=0;
+		var leader=0;
+		var header_right=document.getElementsByClassName("header_right")[0];
+		var ul=header_right.getElementsByTagName("ul")[0];
+		var header=document.getElementsByTagName('header')[0];
+		var header_top=header.offsetTop;
+		var banner=document.getElementsByClassName('banner')[0];
+		var banner_top=banner.offsetTop;
+		var pp=document.getElementById('pp');
+		var pp_top=pp.offsetTop;
+		var arr=[];
+		arr.push(header_top);
+		arr.push(banner_top);
+		arr.push(banner_top);
+		arr.push(pp_top);
+		console.log(arr);
+		var lis=ul.children;
+		for(var i=0;i<ul.children.length;i++){
+			lis[i].index=i;
+			lis[i].onclick=function(){
+				console.log(leader);
+				target=arr[this.index];
+				clearInterval(timer);
+				//移动
+				timer=setInterval(function(){
+					//定义步长  移动动画为缓慢移动
+					var step=(target-leader)/10;
+					step=step>0?Math.ceil(step):Math.floor(step);
+					leader=leader+step;
+					//移动到目标位置
+					window.scrollTo(0, leader);
+					//清楚定时器
+					if(Math.abs(target-leader)<=Math.abs(step)){
+						//先移到位置
+						window.scrollTo(0, target);
+						clearInterval(timer);
+					}
+				},25);
+			}
+
+		}
+
+		//随时获取滚动条的值
+		window.onscroll=function(){
+			leader=document.documentElement.scrollTop;
+		}
+		var img=document.getElementsByClassName('img')[0];
+		img.onclick=function(){
+			img.style.transform='rotateY(180deg)';
+			var flag=false;
+			addEventListener('transitionend', function(){
+				if(!flag){
+				wel.style.fontSize="30px";
+				wel.style.color="red";
+				flag=true;
+				console.log(1);
+				}
+			});
+			
+		}
+		var wel=document.getElementsByClassName('wel')[0];
+
+	</script>
+</body>
+</html>
